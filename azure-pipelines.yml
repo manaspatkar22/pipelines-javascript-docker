@@ -20,7 +20,7 @@ jobs:
         lsb_release -a 
     displayName: Echo Message
 - job: B
-  dependsOn: B
+  dependsOn: A
   pool:
     vmImage: 'Ubuntu-18.04'
   steps:
