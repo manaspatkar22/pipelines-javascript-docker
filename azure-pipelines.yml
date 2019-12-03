@@ -19,11 +19,10 @@ jobs:
     name: printvar
 - job: A
   dependsOn: C
-  condition: and(succedded(),ne(dependencies.C.outputs['printvar.skip'],'true'))
+  condition: and(succeeded(),ne(dependencies.C.outputs['printvar.skip'],'true'))
   steps:
   - script: | 
         echo "$PRINTVAR"
-        lsb_release -a 
     displayName: Echo Message
 - job: B
   dependsOn: A
