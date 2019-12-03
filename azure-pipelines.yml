@@ -29,9 +29,11 @@ jobs:
 - job: A
   dependsOn: C
   condition: and(succeeded(),ne(dependencies.C.outputs['printvar.skip'],'true'))
+  variables:
+    myjobvar: $[ dependencies.C.outputs['printsauce.sauce'] ]
   steps:
   - bash: | 
-        echo "my job variable is $[ dependencies.C.outputs['printsauce.sauce']]"
+        echo "my job variable is $(myjobvar)"
     displayName: Echo Message
 - job: B
   dependsOn: A
