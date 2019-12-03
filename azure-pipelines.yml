@@ -21,7 +21,7 @@ jobs:
   condition: failed()
   steps:
   - script: | 
-        echo "$DOCKERIMAGENAME"
+        echo "$BUILD_SOURCEBRANCH"
         lsb_release -a 
     displayName: Echo Message
 - job: B
