@@ -21,7 +21,7 @@ jobs:
   dependsOn: C
   condition: and(succeeded(),ne(dependencies.C.outputs['printvar.skip'],'true'))
   steps:
-  - script: | 
+  - bash: | 
         echo "$PRINTVAR"
     displayName: Echo Message
 - job: B
