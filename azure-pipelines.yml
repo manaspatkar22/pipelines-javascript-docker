@@ -13,7 +13,12 @@ variables:
   imageName: 'pipelines-javascript-docker'
 
 jobs:
+- job: C
+  steps:
+  - bash: exit 1
 - job: A
+  dependsOn: C
+  condition: failed()
   steps:
   - script: | 
         echo "$DOCKERIMAGENAME"
