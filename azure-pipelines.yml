@@ -21,7 +21,12 @@ jobs:
     displayName: Echo Message
 - job: B
   pool:
-  vmImage: 'Ubuntu-18.04'
+    vmImage: 'Ubuntu-18.04'
+- task: Docker@2
+  inputs:
+    repository: '$(dockerimageName)'
+    command: 'build'
+    Dockerfile: 'app/Dockerfile'
   steps:
   - script: |
         lsb_release -a 
