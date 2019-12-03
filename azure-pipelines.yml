@@ -15,13 +15,14 @@ variables:
 jobs:
 - job: C
   steps:
-  - bash: exit 1
+  - script: 'echo ##vso[task.setVariable skip;isOutput=true;]false'
+    name: printvar
 - job: A
   dependsOn: C
-  condition: failed()
+  condition: and(succedded(),ne(dependencies.C.outputs['printvar.skip'],'true'))
   steps:
   - script: | 
-        echo "$BUILD_SOURCEBRANCH"
+        echo "$PRINTVAR"
         lsb_release -a 
     displayName: Echo Message
 - job: B
