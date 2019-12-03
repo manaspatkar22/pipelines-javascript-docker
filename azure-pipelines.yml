@@ -15,7 +15,6 @@ jobs:
   steps:
   - script: 'echo ##vso[task.setVariable skip;isOutput=true;]false'
     name: printvar
-  steps:
 
 # Create a variable
   - bash: |
