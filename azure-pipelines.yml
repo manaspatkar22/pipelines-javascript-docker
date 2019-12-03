@@ -22,7 +22,7 @@ jobs:
   condition: and(succeeded(),ne(dependencies.C.outputs['printvar.skip'],'true'))
   steps:
   - bash: | 
-        echo "$PIPELINE_WORSPACE"
+        echo "$PIPELINE_WORKSPACE"
     displayName: Echo Message
 - job: B
   dependsOn: A
