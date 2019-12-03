@@ -12,14 +12,17 @@ pool:
 variables:
   imageName: 'pipelines-javascript-docker'
 
-steps:
-- task: Docker@2
-  displayName: Build an image
-  inputs:
-    repository: $(dockerimageName)
-    command: build
-    Dockerfile: app/Dockerfile
-
-- script: 
+jobs:
+- job: A
+  steps:
+  - script: | 
         echo "$DOCKERIMAGENAME"
-  displayName: Echo Message
+        lsb_release -a 
+    displayName: Echo Message
+- job: B
+  pool:
+  vmImage: 'Ubuntu-18.04'
+  steps:
+  - script: |
+        lsb_release -a 
+    displayName: Echo Message on Ubuntu18.04
